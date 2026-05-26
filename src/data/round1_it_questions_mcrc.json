@@ -1,0 +1,2287 @@
+{
+  "round": 1,
+  "title": "Round 1: General IT Knowledge",
+  "marks": 100,
+  "shuffleQuestionsPerUser": true,
+  "shuffleOptionsPerUser": true,
+  "allowSkip": true,
+  "allowBackNavigation": false,
+  "showScoreToCandidate": false,
+  "questions": [
+    {
+      "id": "r1-q001",
+      "round": 1,
+      "category": "General IT",
+      "text": "During POST, a computer produces a sequence of beeps before the display appears. What is the most accurate explanation?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "The keyboard is confirming that Caps Lock is active"
+        },
+        {
+          "key": "B",
+          "text": "The BIOS/UEFI is communicating a hardware diagnostic status"
+        },
+        {
+          "key": "C",
+          "text": "The hard drive is formatting itself automatically"
+        },
+        {
+          "key": "D",
+          "text": "The operating system is loading its desktop environment"
+        }
+      ],
+      "answer": "The BIOS/UEFI is communicating a hardware diagnostic status",
+      "marks": 1
+    },
+    {
+      "id": "r1-q002",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which keyboard shortcut usually moves the cursor one word forward in a text editor?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ctrl + End"
+        },
+        {
+          "key": "B",
+          "text": "Alt + Right Arrow"
+        },
+        {
+          "key": "C",
+          "text": "Ctrl + Right Arrow"
+        },
+        {
+          "key": "D",
+          "text": "Shift + Right Arrow"
+        }
+      ],
+      "answer": "Ctrl + Right Arrow",
+      "marks": 1
+    },
+    {
+      "id": "r1-q003",
+      "round": 1,
+      "category": "General IT",
+      "text": "In 3D printing, what is the main purpose of a slicer program?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "It converts a 3D model into printable layer instructions"
+        },
+        {
+          "key": "B",
+          "text": "It increases the computer’s processor speed"
+        },
+        {
+          "key": "C",
+          "text": "It repairs damaged USB ports"
+        },
+        {
+          "key": "D",
+          "text": "It converts an image into a spreadsheet"
+        }
+      ],
+      "answer": "It converts a 3D model into printable layer instructions",
+      "marks": 1
+    },
+    {
+      "id": "r1-q004",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following best describes a qubit in quantum computing?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "A classical bit that can only store 0 or 1"
+        },
+        {
+          "key": "B",
+          "text": "A quantum unit of information that can exist in a superposition of states"
+        },
+        {
+          "key": "C",
+          "text": "A storage device used only in supercomputers"
+        },
+        {
+          "key": "D",
+          "text": "A file format used to save encrypted documents"
+        }
+      ],
+      "answer": "A quantum unit of information that can exist in a superposition of states",
+      "marks": 1
+    },
+    {
+      "id": "r1-q005",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which generation of computers is most closely associated with integrated circuits?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Third generation"
+        },
+        {
+          "key": "B",
+          "text": "Fourth generation"
+        },
+        {
+          "key": "C",
+          "text": "Fifth generation"
+        },
+        {
+          "key": "D",
+          "text": "First generation"
+        }
+      ],
+      "answer": "Third generation",
+      "marks": 1
+    },
+    {
+      "id": "r1-q006",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the full meaning of HDMI?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Hardware Display Management Interface"
+        },
+        {
+          "key": "B",
+          "text": "High Data Machine Integration"
+        },
+        {
+          "key": "C",
+          "text": "High-Definition Multimedia Interface"
+        },
+        {
+          "key": "D",
+          "text": "High Digital Media Input"
+        }
+      ],
+      "answer": "High-Definition Multimedia Interface",
+      "marks": 1
+    },
+    {
+      "id": "r1-q007",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following is the best example of system software?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Adobe Photoshop"
+        },
+        {
+          "key": "B",
+          "text": "Windows 11"
+        },
+        {
+          "key": "C",
+          "text": "Microsoft Excel"
+        },
+        {
+          "key": "D",
+          "text": "Google Chrome"
+        }
+      ],
+      "answer": "Windows 11",
+      "marks": 1
+    },
+    {
+      "id": "r1-q008",
+      "round": 1,
+      "category": "General IT",
+      "text": "In Boolean logic, what is the output of an AND gate when the inputs are 1 and 0?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "0"
+        },
+        {
+          "key": "B",
+          "text": "Undefined"
+        },
+        {
+          "key": "C",
+          "text": "1"
+        },
+        {
+          "key": "D",
+          "text": "10"
+        }
+      ],
+      "answer": "0",
+      "marks": 1
+    },
+    {
+      "id": "r1-q009",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which key is commonly used to toggle between insert mode and overwrite mode?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Home"
+        },
+        {
+          "key": "B",
+          "text": "Insert"
+        },
+        {
+          "key": "C",
+          "text": "Page Up"
+        },
+        {
+          "key": "D",
+          "text": "End"
+        }
+      ],
+      "answer": "Insert",
+      "marks": 1
+    },
+    {
+      "id": "r1-q010",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does CPU stand for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Central Processing Unit"
+        },
+        {
+          "key": "B",
+          "text": "Computer Processing User"
+        },
+        {
+          "key": "C",
+          "text": "Central Program Utility"
+        },
+        {
+          "key": "D",
+          "text": "Control Processing Unit"
+        }
+      ],
+      "answer": "Central Processing Unit",
+      "marks": 1
+    },
+    {
+      "id": "r1-q011",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these best explains the function of BIOS/UEFI during startup?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "It deletes temporary files before the desktop loads"
+        },
+        {
+          "key": "B",
+          "text": "It creates new user accounts before Windows starts"
+        },
+        {
+          "key": "C",
+          "text": "It automatically updates all installed applications"
+        },
+        {
+          "key": "D",
+          "text": "It checks and initializes hardware before handing control to the operating system"
+        }
+      ],
+      "answer": "It checks and initializes hardware before handing control to the operating system",
+      "marks": 1
+    },
+    {
+      "id": "r1-q012",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which logic gate produces an output of 1 when at least one input is 1?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "NOT"
+        },
+        {
+          "key": "B",
+          "text": "OR"
+        },
+        {
+          "key": "C",
+          "text": "AND"
+        },
+        {
+          "key": "D",
+          "text": "NAND"
+        }
+      ],
+      "answer": "OR",
+      "marks": 1
+    },
+    {
+      "id": "r1-q013",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does Ctrl + Left Arrow usually do in a word processor or text editor?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Selects the previous paragraph"
+        },
+        {
+          "key": "B",
+          "text": "Moves the cursor one word backward"
+        },
+        {
+          "key": "C",
+          "text": "Moves the cursor one character backward"
+        },
+        {
+          "key": "D",
+          "text": "Deletes the previous word"
+        }
+      ],
+      "answer": "Moves the cursor one word backward",
+      "marks": 1
+    },
+    {
+      "id": "r1-q014",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which material is commonly used as filament in FDM 3D printing?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "CMOS"
+        },
+        {
+          "key": "B",
+          "text": "RJ45"
+        },
+        {
+          "key": "C",
+          "text": "HDMI"
+        },
+        {
+          "key": "D",
+          "text": "PLA"
+        }
+      ],
+      "answer": "PLA",
+      "marks": 1
+    },
+    {
+      "id": "r1-q015",
+      "round": 1,
+      "category": "General IT",
+      "text": "Who is often called the father of the computer?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Alan Turing"
+        },
+        {
+          "key": "B",
+          "text": "Charles Babbage"
+        },
+        {
+          "key": "C",
+          "text": "Tim Berners-Lee"
+        },
+        {
+          "key": "D",
+          "text": "Bill Gates"
+        }
+      ],
+      "answer": "Charles Babbage",
+      "marks": 1
+    },
+    {
+      "id": "r1-q016",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following best describes POST?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "A program used to design websites"
+        },
+        {
+          "key": "B",
+          "text": "A process that checks hardware when the computer is powered on"
+        },
+        {
+          "key": "C",
+          "text": "A system for printing documents automatically"
+        },
+        {
+          "key": "D",
+          "text": "A method of sending emails after booting"
+        }
+      ],
+      "answer": "A process that checks hardware when the computer is powered on",
+      "marks": 1
+    },
+    {
+      "id": "r1-q017",
+      "round": 1,
+      "category": "General IT",
+      "text": "In quantum computing, what does superposition mean?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "A qubit can represent a combination of states before measurement"
+        },
+        {
+          "key": "B",
+          "text": "A file exists in two folders at the same time"
+        },
+        {
+          "key": "C",
+          "text": "A processor is running two operating systems separately"
+        },
+        {
+          "key": "D",
+          "text": "A computer is connected to two monitors at once"
+        }
+      ],
+      "answer": "A qubit can represent a combination of states before measurement",
+      "marks": 1
+    },
+    {
+      "id": "r1-q018",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which shortcut is commonly used to save the current document?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ctrl + S"
+        },
+        {
+          "key": "B",
+          "text": "Ctrl + F"
+        },
+        {
+          "key": "C",
+          "text": "Ctrl + P"
+        },
+        {
+          "key": "D",
+          "text": "Ctrl + A"
+        }
+      ],
+      "answer": "Ctrl + S",
+      "marks": 1
+    },
+    {
+      "id": "r1-q019",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which device commonly uses an RJ45 connector?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Printer power cable"
+        },
+        {
+          "key": "B",
+          "text": "Headphone cable"
+        },
+        {
+          "key": "C",
+          "text": "HDMI display cable"
+        },
+        {
+          "key": "D",
+          "text": "Ethernet network cable"
+        }
+      ],
+      "answer": "Ethernet network cable",
+      "marks": 1
+    },
+    {
+      "id": "r1-q020",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these is an application software?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Device driver"
+        },
+        {
+          "key": "B",
+          "text": "BIOS firmware"
+        },
+        {
+          "key": "C",
+          "text": "Microsoft Word"
+        },
+        {
+          "key": "D",
+          "text": "Linux kernel"
+        }
+      ],
+      "answer": "Microsoft Word",
+      "marks": 1
+    },
+    {
+      "id": "r1-q021",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does RAM stand for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Random Access Memory"
+        },
+        {
+          "key": "B",
+          "text": "Remote Access Machine"
+        },
+        {
+          "key": "C",
+          "text": "Rapid Analog Memory"
+        },
+        {
+          "key": "D",
+          "text": "Read Application Module"
+        }
+      ],
+      "answer": "Random Access Memory",
+      "marks": 1
+    },
+    {
+      "id": "r1-q022",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which statement best describes a NOT gate?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "It gives 1 only when both inputs are 1"
+        },
+        {
+          "key": "B",
+          "text": "It stores binary data permanently"
+        },
+        {
+          "key": "C",
+          "text": "It gives 1 when any input is 1"
+        },
+        {
+          "key": "D",
+          "text": "It reverses the input value"
+        }
+      ],
+      "answer": "It reverses the input value",
+      "marks": 1
+    },
+    {
+      "id": "r1-q023",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the usual function of the Home key in a line of text?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Move the cursor to the end of the document"
+        },
+        {
+          "key": "B",
+          "text": "Open the browser home page in all programs"
+        },
+        {
+          "key": "C",
+          "text": "Delete the current line"
+        },
+        {
+          "key": "D",
+          "text": "Move the cursor to the start of the line"
+        }
+      ],
+      "answer": "Move the cursor to the start of the line",
+      "marks": 1
+    },
+    {
+      "id": "r1-q024",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which computer generation used transistors?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Third generation"
+        },
+        {
+          "key": "B",
+          "text": "Fifth generation"
+        },
+        {
+          "key": "C",
+          "text": "First generation"
+        },
+        {
+          "key": "D",
+          "text": "Second generation"
+        }
+      ],
+      "answer": "Second generation",
+      "marks": 1
+    },
+    {
+      "id": "r1-q025",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which file format is commonly used for 3D printable models?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "DOCX"
+        },
+        {
+          "key": "B",
+          "text": "XLSX"
+        },
+        {
+          "key": "C",
+          "text": "STL"
+        },
+        {
+          "key": "D",
+          "text": "PPTX"
+        }
+      ],
+      "answer": "STL",
+      "marks": 1
+    },
+    {
+      "id": "r1-q026",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following best defines an operating system?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Software that manages hardware resources and provides services to applications"
+        },
+        {
+          "key": "B",
+          "text": "A virus protection device attached to the motherboard"
+        },
+        {
+          "key": "C",
+          "text": "A hardware component that stores electricity"
+        },
+        {
+          "key": "D",
+          "text": "A cable used to connect a projector"
+        }
+      ],
+      "answer": "Software that manages hardware resources and provides services to applications",
+      "marks": 1
+    },
+    {
+      "id": "r1-q027",
+      "round": 1,
+      "category": "General IT",
+      "text": "In quantum computing, what is quantum entanglement?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "A technique for cooling a laptop fan"
+        },
+        {
+          "key": "B",
+          "text": "A method of compressing image files"
+        },
+        {
+          "key": "C",
+          "text": "A process of connecting many USB devices to one hub"
+        },
+        {
+          "key": "D",
+          "text": "A condition where quantum particles become linked so the state of one is related to another"
+        }
+      ],
+      "answer": "A condition where quantum particles become linked so the state of one is related to another",
+      "marks": 1
+    },
+    {
+      "id": "r1-q028",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the main function of an HDMI cable?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "To carry digital audio and video signals"
+        },
+        {
+          "key": "B",
+          "text": "To connect internal storage to the motherboard only"
+        },
+        {
+          "key": "C",
+          "text": "To transfer only keyboard signals"
+        },
+        {
+          "key": "D",
+          "text": "To increase RAM capacity"
+        }
+      ],
+      "answer": "To carry digital audio and video signals",
+      "marks": 1
+    },
+    {
+      "id": "r1-q029",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which shortcut is commonly used to undo the previous action?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ctrl + Shift"
+        },
+        {
+          "key": "B",
+          "text": "Ctrl + Z"
+        },
+        {
+          "key": "C",
+          "text": "Ctrl + U"
+        },
+        {
+          "key": "D",
+          "text": "Ctrl + Y"
+        }
+      ],
+      "answer": "Ctrl + Z",
+      "marks": 1
+    },
+    {
+      "id": "r1-q030",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these is a utility program?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Disk Cleanup"
+        },
+        {
+          "key": "B",
+          "text": "PowerPoint"
+        },
+        {
+          "key": "C",
+          "text": "WordPad as a document editor only"
+        },
+        {
+          "key": "D",
+          "text": "Calculator as arithmetic software only"
+        }
+      ],
+      "answer": "Disk Cleanup",
+      "marks": 1
+    },
+    {
+      "id": "r1-q031",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does ROM stand for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Rapid Operating Module"
+        },
+        {
+          "key": "B",
+          "text": "Random Output Memory"
+        },
+        {
+          "key": "C",
+          "text": "Read Open Mode"
+        },
+        {
+          "key": "D",
+          "text": "Read Only Memory"
+        }
+      ],
+      "answer": "Read Only Memory",
+      "marks": 1
+    },
+    {
+      "id": "r1-q032",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which statement best describes the Page Down key?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "It deletes the current page"
+        },
+        {
+          "key": "B",
+          "text": "It inserts a blank page"
+        },
+        {
+          "key": "C",
+          "text": "It prints the next page"
+        },
+        {
+          "key": "D",
+          "text": "It moves the document view one screen or page downward"
+        }
+      ],
+      "answer": "It moves the document view one screen or page downward",
+      "marks": 1
+    },
+    {
+      "id": "r1-q033",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the output of an OR gate when inputs are 0 and 0?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "1"
+        },
+        {
+          "key": "B",
+          "text": "0"
+        },
+        {
+          "key": "C",
+          "text": "00"
+        },
+        {
+          "key": "D",
+          "text": "2"
+        }
+      ],
+      "answer": "0",
+      "marks": 1
+    },
+    {
+      "id": "r1-q034",
+      "round": 1,
+      "category": "General IT",
+      "text": "What was ENIAC?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "One of the earliest electronic general-purpose computers"
+        },
+        {
+          "key": "B",
+          "text": "A 3D modelling software only"
+        },
+        {
+          "key": "C",
+          "text": "A modern mobile operating system"
+        },
+        {
+          "key": "D",
+          "text": "A type of HDMI connector"
+        }
+      ],
+      "answer": "One of the earliest electronic general-purpose computers",
+      "marks": 1
+    },
+    {
+      "id": "r1-q035",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following best describes a device driver?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "A physical cable that powers the motherboard"
+        },
+        {
+          "key": "B",
+          "text": "A spreadsheet formula for calculations"
+        },
+        {
+          "key": "C",
+          "text": "A program that allows the operating system to communicate with hardware"
+        },
+        {
+          "key": "D",
+          "text": "A memory chip that stores the BIOS battery"
+        }
+      ],
+      "answer": "A program that allows the operating system to communicate with hardware",
+      "marks": 1
+    },
+    {
+      "id": "r1-q036",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which shortcut is commonly used to open the print dialog?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ctrl + P"
+        },
+        {
+          "key": "B",
+          "text": "Ctrl + D"
+        },
+        {
+          "key": "C",
+          "text": "Ctrl + R"
+        },
+        {
+          "key": "D",
+          "text": "Ctrl + O"
+        }
+      ],
+      "answer": "Ctrl + P",
+      "marks": 1
+    },
+    {
+      "id": "r1-q037",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following is a key difference between VGA and HDMI?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "VGA usually carries analog video, while HDMI carries digital audio and video"
+        },
+        {
+          "key": "B",
+          "text": "VGA is digital while HDMI is analog"
+        },
+        {
+          "key": "C",
+          "text": "HDMI can only carry keyboard input"
+        },
+        {
+          "key": "D",
+          "text": "VGA is used only for internet connection"
+        }
+      ],
+      "answer": "VGA usually carries analog video, while HDMI carries digital audio and video",
+      "marks": 1
+    },
+    {
+      "id": "r1-q038",
+      "round": 1,
+      "category": "General IT",
+      "text": "In 3D printing, what does the nozzle mainly do?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Stores the final printed object"
+        },
+        {
+          "key": "B",
+          "text": "Converts binary code into sound"
+        },
+        {
+          "key": "C",
+          "text": "Melts and deposits filament material"
+        },
+        {
+          "key": "D",
+          "text": "Controls internet access"
+        }
+      ],
+      "answer": "Melts and deposits filament material",
+      "marks": 1
+    },
+    {
+      "id": "r1-q039",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does GUI stand for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Graphical User Interface"
+        },
+        {
+          "key": "B",
+          "text": "General User Instruction"
+        },
+        {
+          "key": "C",
+          "text": "Graphic Universal Internet"
+        },
+        {
+          "key": "D",
+          "text": "Global Utility Input"
+        }
+      ],
+      "answer": "Graphical User Interface",
+      "marks": 1
+    },
+    {
+      "id": "r1-q040",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which shortcut usually selects all content in a document or field?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ctrl + T"
+        },
+        {
+          "key": "B",
+          "text": "Ctrl + A"
+        },
+        {
+          "key": "C",
+          "text": "Ctrl + C"
+        },
+        {
+          "key": "D",
+          "text": "Ctrl + S"
+        }
+      ],
+      "answer": "Ctrl + A",
+      "marks": 1
+    },
+    {
+      "id": "r1-q041",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which generation of computers used vacuum tubes?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Fifth generation"
+        },
+        {
+          "key": "B",
+          "text": "Second generation"
+        },
+        {
+          "key": "C",
+          "text": "First generation"
+        },
+        {
+          "key": "D",
+          "text": "Fourth generation"
+        }
+      ],
+      "answer": "First generation",
+      "marks": 1
+    },
+    {
+      "id": "r1-q042",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is a truth table used for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Measuring the speed of a graphics card"
+        },
+        {
+          "key": "B",
+          "text": "Listing all files on a hard drive"
+        },
+        {
+          "key": "C",
+          "text": "Showing the output of a logic circuit for all possible input combinations"
+        },
+        {
+          "key": "D",
+          "text": "Formatting a storage device"
+        }
+      ],
+      "answer": "Showing the output of a logic circuit for all possible input combinations",
+      "marks": 1
+    },
+    {
+      "id": "r1-q043",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the main purpose of antivirus software?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "To convert HDMI to VGA automatically"
+        },
+        {
+          "key": "B",
+          "text": "To detect, prevent, and remove malicious software"
+        },
+        {
+          "key": "C",
+          "text": "To increase screen size"
+        },
+        {
+          "key": "D",
+          "text": "To create animations"
+        }
+      ],
+      "answer": "To detect, prevent, and remove malicious software",
+      "marks": 1
+    },
+    {
+      "id": "r1-q044",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does USB stand for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "User Software Bridge"
+        },
+        {
+          "key": "B",
+          "text": "Universal Serial Bus"
+        },
+        {
+          "key": "C",
+          "text": "Universal System Boot"
+        },
+        {
+          "key": "D",
+          "text": "United Storage Board"
+        }
+      ],
+      "answer": "Universal Serial Bus",
+      "marks": 1
+    },
+    {
+      "id": "r1-q045",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these is most associated with quantum computing rather than classical computing?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Defragmentation"
+        },
+        {
+          "key": "B",
+          "text": "Superposition"
+        },
+        {
+          "key": "C",
+          "text": "Word wrapping"
+        },
+        {
+          "key": "D",
+          "text": "Formatting"
+        }
+      ],
+      "answer": "Superposition",
+      "marks": 1
+    },
+    {
+      "id": "r1-q046",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which shortcut is commonly used to cut selected text or an item?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ctrl + X"
+        },
+        {
+          "key": "B",
+          "text": "Ctrl + C"
+        },
+        {
+          "key": "C",
+          "text": "Ctrl + B"
+        },
+        {
+          "key": "D",
+          "text": "Ctrl + V"
+        }
+      ],
+      "answer": "Ctrl + X",
+      "marks": 1
+    },
+    {
+      "id": "r1-q047",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the function of the End key in many text editors?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Opens Task Manager"
+        },
+        {
+          "key": "B",
+          "text": "Moves the cursor to the end of the line"
+        },
+        {
+          "key": "C",
+          "text": "Deletes the entire document"
+        },
+        {
+          "key": "D",
+          "text": "Moves the cursor to the beginning of the line"
+        }
+      ],
+      "answer": "Moves the cursor to the end of the line",
+      "marks": 1
+    },
+    {
+      "id": "r1-q048",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following is the best example of a special-purpose key?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Letter A"
+        },
+        {
+          "key": "B",
+          "text": "Number 7"
+        },
+        {
+          "key": "C",
+          "text": "Page Up"
+        },
+        {
+          "key": "D",
+          "text": "Semicolon key"
+        }
+      ],
+      "answer": "Page Up",
+      "marks": 1
+    },
+    {
+      "id": "r1-q049",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following describes microprocessors in computer history?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "They are the same as vacuum tubes"
+        },
+        {
+          "key": "B",
+          "text": "They are associated mainly with fourth-generation computers"
+        },
+        {
+          "key": "C",
+          "text": "They replaced all software applications"
+        },
+        {
+          "key": "D",
+          "text": "They were first used in the abacus"
+        }
+      ],
+      "answer": "They are associated mainly with fourth-generation computers",
+      "marks": 1
+    },
+    {
+      "id": "r1-q050",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does URL stand for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Uniform Resource Locator"
+        },
+        {
+          "key": "B",
+          "text": "User Reference Link"
+        },
+        {
+          "key": "C",
+          "text": "Unified Record Language"
+        },
+        {
+          "key": "D",
+          "text": "Universal Router Line"
+        }
+      ],
+      "answer": "Uniform Resource Locator",
+      "marks": 1
+    },
+    {
+      "id": "r1-q051",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does a NAND gate do?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Sends audio through HDMI"
+        },
+        {
+          "key": "B",
+          "text": "Gives the same output as an OR gate"
+        },
+        {
+          "key": "C",
+          "text": "Stores a quantum bit permanently"
+        },
+        {
+          "key": "D",
+          "text": "Gives the opposite output of an AND gate"
+        }
+      ],
+      "answer": "Gives the opposite output of an AND gate",
+      "marks": 1
+    },
+    {
+      "id": "r1-q052",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which statement best explains a special-purpose application?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Software that manages the entire computer system"
+        },
+        {
+          "key": "B",
+          "text": "Hardware used only during POST"
+        },
+        {
+          "key": "C",
+          "text": "Firmware stored inside CMOS only"
+        },
+        {
+          "key": "D",
+          "text": "Software designed to perform a specific task for a specific need"
+        }
+      ],
+      "answer": "Software designed to perform a specific task for a specific need",
+      "marks": 1
+    },
+    {
+      "id": "r1-q053",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the purpose of the Page Up key?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Moves the view one screen or page upward"
+        },
+        {
+          "key": "B",
+          "text": "Moves the cursor one word backward"
+        },
+        {
+          "key": "C",
+          "text": "Deletes the current paragraph"
+        },
+        {
+          "key": "D",
+          "text": "Opens the previous application"
+        }
+      ],
+      "answer": "Moves the view one screen or page upward",
+      "marks": 1
+    },
+    {
+      "id": "r1-q054",
+      "round": 1,
+      "category": "General IT",
+      "text": "In 3D printing, what is infill?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "The internal structure printed inside an object"
+        },
+        {
+          "key": "B",
+          "text": "The cable that connects the printer to HDMI"
+        },
+        {
+          "key": "C",
+          "text": "The outer colour of the monitor"
+        },
+        {
+          "key": "D",
+          "text": "The password used to protect a model file"
+        }
+      ],
+      "answer": "The internal structure printed inside an object",
+      "marks": 1
+    },
+    {
+      "id": "r1-q055",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these best explains Ctrl + V?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "It validates a logic gate"
+        },
+        {
+          "key": "B",
+          "text": "It verifies a file"
+        },
+        {
+          "key": "C",
+          "text": "It views the BIOS setup"
+        },
+        {
+          "key": "D",
+          "text": "It pastes copied or cut content"
+        }
+      ],
+      "answer": "It pastes copied or cut content",
+      "marks": 1
+    },
+    {
+      "id": "r1-q056",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does LAN stand for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Local Area Network"
+        },
+        {
+          "key": "B",
+          "text": "Local Analog Name"
+        },
+        {
+          "key": "C",
+          "text": "Linked Access Node"
+        },
+        {
+          "key": "D",
+          "text": "Large Application Number"
+        }
+      ],
+      "answer": "Local Area Network",
+      "marks": 1
+    },
+    {
+      "id": "r1-q057",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the purpose of CMOS battery in many computers?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "To help maintain BIOS/UEFI settings and system time when power is off"
+        },
+        {
+          "key": "B",
+          "text": "To permanently increase RAM size"
+        },
+        {
+          "key": "C",
+          "text": "To cool the graphics card"
+        },
+        {
+          "key": "D",
+          "text": "To connect the monitor to HDMI"
+        }
+      ],
+      "answer": "To help maintain BIOS/UEFI settings and system time when power is off",
+      "marks": 1
+    },
+    {
+      "id": "r1-q058",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these best describes a 3D model?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "A digital representation of an object in three dimensions"
+        },
+        {
+          "key": "B",
+          "text": "A compressed audio file"
+        },
+        {
+          "key": "C",
+          "text": "A type of logic gate"
+        },
+        {
+          "key": "D",
+          "text": "A physical printed document"
+        }
+      ],
+      "answer": "A digital representation of an object in three dimensions",
+      "marks": 1
+    },
+    {
+      "id": "r1-q059",
+      "round": 1,
+      "category": "General IT",
+      "text": "Who is regarded as the first computer programmer?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Steve Jobs"
+        },
+        {
+          "key": "B",
+          "text": "Charles Babbage"
+        },
+        {
+          "key": "C",
+          "text": "Grace Hopper"
+        },
+        {
+          "key": "D",
+          "text": "Ada Lovelace"
+        }
+      ],
+      "answer": "Ada Lovelace",
+      "marks": 1
+    },
+    {
+      "id": "r1-q060",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which shortcut is commonly used to redo an undone action?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ctrl + Home"
+        },
+        {
+          "key": "B",
+          "text": "Ctrl + R"
+        },
+        {
+          "key": "C",
+          "text": "Ctrl + Shift"
+        },
+        {
+          "key": "D",
+          "text": "Ctrl + Y"
+        }
+      ],
+      "answer": "Ctrl + Y",
+      "marks": 1
+    },
+    {
+      "id": "r1-q061",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which statement about quantum measurement is most accurate?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Measuring a qubit always doubles computer memory"
+        },
+        {
+          "key": "B",
+          "text": "Measuring a qubit repairs damaged files"
+        },
+        {
+          "key": "C",
+          "text": "Measuring a qubit converts HDMI to VGA"
+        },
+        {
+          "key": "D",
+          "text": "Measuring a qubit can cause it to collapse to a definite classical state"
+        }
+      ],
+      "answer": "Measuring a qubit can cause it to collapse to a definite classical state",
+      "marks": 1
+    },
+    {
+      "id": "r1-q062",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these is an output device?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Scanner"
+        },
+        {
+          "key": "B",
+          "text": "Monitor"
+        },
+        {
+          "key": "C",
+          "text": "Keyboard"
+        },
+        {
+          "key": "D",
+          "text": "Mouse"
+        }
+      ],
+      "answer": "Monitor",
+      "marks": 1
+    },
+    {
+      "id": "r1-q063",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the full meaning of IP in networking?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Internet Protocol"
+        },
+        {
+          "key": "B",
+          "text": "Information Panel"
+        },
+        {
+          "key": "C",
+          "text": "Internal Program"
+        },
+        {
+          "key": "D",
+          "text": "Input Processor"
+        }
+      ],
+      "answer": "Internet Protocol",
+      "marks": 1
+    },
+    {
+      "id": "r1-q064",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which logic gate gives output 0 only when all inputs are 0?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "AND"
+        },
+        {
+          "key": "B",
+          "text": "NOT"
+        },
+        {
+          "key": "C",
+          "text": "XOR"
+        },
+        {
+          "key": "D",
+          "text": "OR"
+        }
+      ],
+      "answer": "OR",
+      "marks": 1
+    },
+    {
+      "id": "r1-q065",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is one advantage of USB-C?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "It replaces the need for an operating system"
+        },
+        {
+          "key": "B",
+          "text": "It is reversible and can support data, power, and display depending on the device"
+        },
+        {
+          "key": "C",
+          "text": "It is only used for analog video"
+        },
+        {
+          "key": "D",
+          "text": "It only works with floppy disks"
+        }
+      ],
+      "answer": "It is reversible and can support data, power, and display depending on the device",
+      "marks": 1
+    },
+    {
+      "id": "r1-q066",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these best describes a compiler?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "A special key used to move up a page"
+        },
+        {
+          "key": "B",
+          "text": "A cable that transmits video signals"
+        },
+        {
+          "key": "C",
+          "text": "A program that translates source code into machine code or another lower-level form"
+        },
+        {
+          "key": "D",
+          "text": "A device that stores BIOS settings only"
+        }
+      ],
+      "answer": "A program that translates source code into machine code or another lower-level form",
+      "marks": 1
+    },
+    {
+      "id": "r1-q067",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which generation of computers is associated with artificial intelligence and knowledge-based systems?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Third generation"
+        },
+        {
+          "key": "B",
+          "text": "Fourth generation"
+        },
+        {
+          "key": "C",
+          "text": "First generation"
+        },
+        {
+          "key": "D",
+          "text": "Fifth generation"
+        }
+      ],
+      "answer": "Fifth generation",
+      "marks": 1
+    },
+    {
+      "id": "r1-q068",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does Ctrl + C usually do?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Clears the BIOS"
+        },
+        {
+          "key": "B",
+          "text": "Copies selected content"
+        },
+        {
+          "key": "C",
+          "text": "Closes all windows"
+        },
+        {
+          "key": "D",
+          "text": "Cuts selected content"
+        }
+      ],
+      "answer": "Copies selected content",
+      "marks": 1
+    },
+    {
+      "id": "r1-q069",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following is a common function of a file manager?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Organizing, copying, moving, renaming, and deleting files"
+        },
+        {
+          "key": "B",
+          "text": "Supplying electricity to the motherboard"
+        },
+        {
+          "key": "C",
+          "text": "Printing objects in three dimensions"
+        },
+        {
+          "key": "D",
+          "text": "Performing quantum measurement"
+        }
+      ],
+      "answer": "Organizing, copying, moving, renaming, and deleting files",
+      "marks": 1
+    },
+    {
+      "id": "r1-q070",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the output of a NOT gate if the input is 1?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "0"
+        },
+        {
+          "key": "B",
+          "text": "1"
+        },
+        {
+          "key": "C",
+          "text": "11"
+        },
+        {
+          "key": "D",
+          "text": "Undefined"
+        }
+      ],
+      "answer": "0",
+      "marks": 1
+    },
+    {
+      "id": "r1-q071",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of the following is a common purpose of Microsoft Excel?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "3D filament melting"
+        },
+        {
+          "key": "B",
+          "text": "BIOS configuration only"
+        },
+        {
+          "key": "C",
+          "text": "HDMI signal transmission"
+        },
+        {
+          "key": "D",
+          "text": "Spreadsheet calculations and data analysis"
+        }
+      ],
+      "answer": "Spreadsheet calculations and data analysis",
+      "marks": 1
+    },
+    {
+      "id": "r1-q072",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is quantum parallelism often used to describe?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "The process of opening several browser tabs"
+        },
+        {
+          "key": "B",
+          "text": "The arrangement of files in two columns"
+        },
+        {
+          "key": "C",
+          "text": "The ability of quantum systems to evaluate many possibilities through superposition"
+        },
+        {
+          "key": "D",
+          "text": "The connection of two keyboards to one computer"
+        }
+      ],
+      "answer": "The ability of quantum systems to evaluate many possibilities through superposition",
+      "marks": 1
+    },
+    {
+      "id": "r1-q073",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which of these is the most accurate description of boot order?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "The order in which files are printed"
+        },
+        {
+          "key": "B",
+          "text": "The sequence of answers in a multiple-choice test"
+        },
+        {
+          "key": "C",
+          "text": "The order in which a computer checks devices for a bootable operating system"
+        },
+        {
+          "key": "D",
+          "text": "The arrangement of keyboard keys alphabetically"
+        }
+      ],
+      "answer": "The order in which a computer checks devices for a bootable operating system",
+      "marks": 1
+    },
+    {
+      "id": "r1-q074",
+      "round": 1,
+      "category": "General IT",
+      "text": "Which part of a 3D printer is usually heated to melt filament?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "CMOS battery"
+        },
+        {
+          "key": "B",
+          "text": "Hot end/nozzle assembly"
+        },
+        {
+          "key": "C",
+          "text": "Ethernet port"
+        },
+        {
+          "key": "D",
+          "text": "Keyboard matrix"
+        }
+      ],
+      "answer": "Hot end/nozzle assembly",
+      "marks": 1
+    },
+    {
+      "id": "r1-q075",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does ICT stand for?",
+      "type": "multiple",
+      "options": [
+        {
+          "key": "A",
+          "text": "Internet Cable Terminal"
+        },
+        {
+          "key": "B",
+          "text": "Internal Computer Transfer"
+        },
+        {
+          "key": "C",
+          "text": "Information and Communication Technology"
+        },
+        {
+          "key": "D",
+          "text": "Integrated Circuit Transmission"
+        }
+      ],
+      "answer": "Information and Communication Technology",
+      "marks": 1
+    },
+    {
+      "id": "r1-q076",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the difference between BIOS and POST?",
+      "type": "short",
+      "options": [],
+      "answer": "BIOS/UEFI is firmware that initializes hardware and starts the boot process, while POST is the diagnostic test performed during startup to check whether essential hardware is working.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q077",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does Ctrl + Left Arrow do in most text editors?",
+      "type": "short",
+      "options": [],
+      "answer": "It moves the cursor one word backward.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q078",
+      "round": 1,
+      "category": "General IT",
+      "text": "State two examples of system software.",
+      "type": "short",
+      "options": [],
+      "answer": "Windows and Linux.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q079",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the purpose of a device driver?",
+      "type": "short",
+      "options": [],
+      "answer": "A device driver allows the operating system to communicate correctly with a hardware device.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q080",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the full meaning of HDMI?",
+      "type": "short",
+      "options": [],
+      "answer": "High-Definition Multimedia Interface.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q081",
+      "round": 1,
+      "category": "General IT",
+      "text": "State one advantage of HDMI over VGA.",
+      "type": "short",
+      "options": [],
+      "answer": "HDMI carries digital audio and video, while VGA usually carries analog video only.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q082",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is slicing in 3D printing?",
+      "type": "short",
+      "options": [],
+      "answer": "Slicing is the process of converting a 3D model into layers and machine instructions that a 3D printer can follow.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q083",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is infill in 3D printing?",
+      "type": "short",
+      "options": [],
+      "answer": "Infill is the internal printed structure inside a 3D object that affects its strength, weight, and material usage.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q084",
+      "round": 1,
+      "category": "General IT",
+      "text": "Who designed the Analytical Engine?",
+      "type": "short",
+      "options": [],
+      "answer": "Charles Babbage.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q085",
+      "round": 1,
+      "category": "General IT",
+      "text": "Why is Ada Lovelace important in computer history?",
+      "type": "short",
+      "options": [],
+      "answer": "Ada Lovelace is regarded as the first computer programmer because she wrote an algorithm intended for Charles Babbage’s Analytical Engine.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q086",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does the Insert key usually do?",
+      "type": "short",
+      "options": [],
+      "answer": "It toggles between insert mode and overwrite mode.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q087",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does the Home key usually do in text editing?",
+      "type": "short",
+      "options": [],
+      "answer": "It moves the cursor to the beginning of the current line.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q088",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does the Page Up key do?",
+      "type": "short",
+      "options": [],
+      "answer": "It moves the document or screen view one page or screen upward.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q089",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the function of an AND gate?",
+      "type": "short",
+      "options": [],
+      "answer": "An AND gate gives an output of 1 only when all its inputs are 1.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q090",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the function of a NOT gate?",
+      "type": "short",
+      "options": [],
+      "answer": "A NOT gate reverses the input value; 1 becomes 0 and 0 becomes 1.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q091",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is a truth table?",
+      "type": "short",
+      "options": [],
+      "answer": "A truth table shows all possible input combinations of a logic circuit and the output produced for each combination.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q092",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is a qubit?",
+      "type": "short",
+      "options": [],
+      "answer": "A qubit is the basic unit of quantum information and can exist in a superposition of 0 and 1 before measurement.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q093",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is superposition in quantum computing?",
+      "type": "short",
+      "options": [],
+      "answer": "Superposition is the ability of a qubit to represent a combination of possible states before it is measured.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q094",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is quantum entanglement?",
+      "type": "short",
+      "options": [],
+      "answer": "Quantum entanglement is a link between quantum particles where the state of one particle is connected to the state of another, even when separated.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q095",
+      "round": 1,
+      "category": "General IT",
+      "text": "What happens when a qubit is measured?",
+      "type": "short",
+      "options": [],
+      "answer": "When a qubit is measured, it collapses from a superposition into a definite classical state such as 0 or 1.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q096",
+      "round": 1,
+      "category": "General IT",
+      "text": "What does POST stand for?",
+      "type": "short",
+      "options": [],
+      "answer": "Power-On Self-Test.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q097",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the purpose of the CMOS battery?",
+      "type": "short",
+      "options": [],
+      "answer": "It helps maintain BIOS/UEFI settings and the system clock when the computer is powered off.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q098",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the full meaning of GUI?",
+      "type": "short",
+      "options": [],
+      "answer": "Graphical User Interface.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q099",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the purpose of antivirus software?",
+      "type": "short",
+      "options": [],
+      "answer": "Antivirus software detects, prevents, quarantines, and removes malicious software.",
+      "marks": 1
+    },
+    {
+      "id": "r1-q100",
+      "round": 1,
+      "category": "General IT",
+      "text": "What is the difference between application software and system software?",
+      "type": "short",
+      "options": [],
+      "answer": "System software manages the computer’s hardware and provides a platform for other programs, while application software helps users perform specific tasks such as typing, browsing, designing, or calculating.",
+      "marks": 1
+    }
+  ]
+}
