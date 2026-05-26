@@ -54,6 +54,9 @@ export default function App() {
   const [settings, setSettings] = useState<Settings>(defaultSettings);
   const [categories, setCategories] = useState<string[]>(defaultCategories);
 
+  const [selectedPerformance, setSelectedPerformance] = useState<any | null>(null);
+  const [performanceLoading, setPerformanceLoading] = useState(false);
+
   const [fullName, setFullName] = useState("");
   const [round2Category, setRound2Category] = useState("");
   const [candidateId, setCandidateId] = useState("");
@@ -73,7 +76,6 @@ export default function App() {
   const [adminCategory, setAdminCategory] = useState("Python");
   const [adminQuestions, setAdminQuestions] = useState<any[]>([]);
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
-  const [selectedCandidate, setSelectedCandidate] = useState<any>(null);
 
   const currentQuestion = questions[questionIndex];
   const progress = questions.length ? ((questionIndex + 1) / questions.length) * 100 : 0;
@@ -81,8 +83,8 @@ export default function App() {
   const canSkip = currentRound === 1;
 
   useEffect(() => {
-    api("/api/settings").then((s) => Object.keys(s).length && setSettings(s)).catch(() => {});
-    api("/api/categories").then((c) => c.length && setCategories(c)).catch(() => {});
+    api("/api/settings").then((s) => Object.keys(s).length && setSettings(s)).catch(() => { });
+    api("/api/categories").then((c) => c.length && setCategories(c)).catch(() => { });
   }, []);
 
   useEffect(() => {
@@ -188,8 +190,17 @@ export default function App() {
   }
 
   async function openCandidate(id: string) {
-    const data = await api(`/api/admin/candidates/${id}`, { headers: { "x-admin-password": adminPassword } });
-    setSelectedCandidate(data);
+    try {
+      setPerformanceLoading(true);
+      const data = await api(`/api/admin/candidates/${id}/performance`, {
+        headers: { "x-admin-password": adminPassword },
+      });
+      setSelectedPerformance(data);
+    } catch (e: any) {
+      alert(e.message || "Could not load candidate performance.");
+    } finally {
+      setPerformanceLoading(false);
+    }
   }
 
   async function adminLogin() {
@@ -242,6 +253,26 @@ export default function App() {
   async function saveSettings() {
     await api("/api/admin/settings", { method: "PUT", headers: { "x-admin-password": adminPassword }, body: JSON.stringify({ roundConfig: settings }) });
     alert("Settings saved.");
+  }
+
+  async function clearLeaderboard() {
+    const confirmed = window.confirm(
+      "Are you sure you want to clear the leaderboard? This will delete all candidates, scores, assigned questions, and submitted answers."
+    );
+
+    if (!confirmed) return;
+
+    try {
+      await api("/api/admin/leaderboard", {
+        method: "DELETE",
+        headers: { "x-admin-password": adminPassword },
+      });
+      setLeaderboard([]);
+      setSelectedPerformance(null);
+      alert("Leaderboard cleared successfully.");
+    } catch (e: any) {
+      alert(e.message || "Could not clear leaderboard.");
+    }
   }
 
   const roundTitle = useMemo(() => {
@@ -309,9 +340,34 @@ export default function App() {
 
             {adminTab === "leaderboard" && (
               <section className="panel">
-                <div className="panel-head"><h2>Leaderboard</h2><button className="ghost-btn" onClick={loadLeaderboard}>Refresh</button></div>
-                <div className="table-wrap"><table><thead><tr><th>Rank</th><th>Name</th><th>Category</th><th>Score</th><th>Status</th></tr></thead><tbody>{leaderboard.map((c, i) => <tr key={c.id} onClick={() => openCandidate(c.id)}><td>{i + 1}</td><td>{c.fullName}</td><td>{c.round2Category}</td><td>{c.totalScore}/{c.totalPossible}</td><td>{c.status}</td></tr>)}</tbody></table></div>
-                {selectedCandidate && <div className="breakdown"><h3>{selectedCandidate.candidate.fullName}</h3><div className="score-cards">{[1,2,3,4].map((r) => { const total = selectedCandidate.answers.filter((a:any)=>a.round===r).reduce((s:number,a:any)=>s+a.score,0); return <div key={r}><span>Round {r}</span><strong>{total}</strong></div>; })}</div></div>}
+                <div className="panel-head">
+                  <div>
+                    <h2>Leaderboard</h2>
+                    <p>Click a candidate to view the questions, answers given, correct answers, and marks.</p>
+                  </div>
+                  <div className="panel-actions">
+                    <button className="ghost-btn" onClick={loadLeaderboard}>Refresh</button>
+                    <button className="danger-btn" onClick={clearLeaderboard}>Clear Leaderboard</button>
+                  </div>
+                </div>
+                <div className="table-wrap">
+                  <table>
+                    <thead>
+                      <tr><th>Rank</th><th>Name</th><th>Category</th><th>Score</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                      {leaderboard.map((c, i) => (
+                        <tr key={c.id} onClick={() => openCandidate(c.id)}>
+                          <td>{i + 1}</td>
+                          <td>{c.fullName}</td>
+                          <td>{c.round2Category}</td>
+                          <td>{c.totalScore}/{c.totalPossible}</td>
+                          <td>{c.status}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </section>
             )}
 
@@ -319,11 +375,76 @@ export default function App() {
               <section className="panel">
                 <div className="panel-head"><h2>Round Settings</h2><button className="primary-btn small" onClick={saveSettings}>Save Settings</button></div>
                 <div className="settings-grid">
-                  {[1,2,3,4].map((r) => <div className="setting-card" key={r}><h3>Round {r}</h3><label>Questions</label><input type="number" value={settings[String(r)].questionCount} onChange={(e) => setSettings((s) => ({...s, [r]: {...s[String(r)], questionCount: Number(e.target.value)}}))} /><label>Marks</label><input type="number" value={settings[String(r)].marks} onChange={(e) => setSettings((s) => ({...s, [r]: {...s[String(r)], marks: Number(e.target.value)}}))} /><label>Time in minutes</label><input type="number" value={settings[String(r)].timeMinutes} onChange={(e) => setSettings((s) => ({...s, [r]: {...s[String(r)], timeMinutes: Number(e.target.value)}}))} /></div>)}
+                  {[1, 2, 3, 4].map((r) => <div className="setting-card" key={r}><h3>Round {r}</h3><label>Questions</label><input type="number" value={settings[String(r)].questionCount} onChange={(e) => setSettings((s) => ({ ...s, [r]: { ...s[String(r)], questionCount: Number(e.target.value) } }))} /><label>Marks</label><input type="number" value={settings[String(r)].marks} onChange={(e) => setSettings((s) => ({ ...s, [r]: { ...s[String(r)], marks: Number(e.target.value) } }))} /><label>Time in minutes</label><input type="number" value={settings[String(r)].timeMinutes} onChange={(e) => setSettings((s) => ({ ...s, [r]: { ...s[String(r)], timeMinutes: Number(e.target.value) } }))} /></div>)}
                 </div>
               </section>
             )}
           </main>
+        )}
+
+        {selectedPerformance && (
+          <div className="modal-backdrop" onClick={() => setSelectedPerformance(null)}>
+            <section className="performance-modal" onClick={(e) => e.stopPropagation()}>
+              <div className="performance-modal-head">
+                <div>
+                  <h2>{selectedPerformance.candidate.fullName}</h2>
+                  <p>
+                    Total Score: {selectedPerformance.candidate.totalScore}/{selectedPerformance.candidate.totalPossible}
+                  </p>
+                </div>
+                <button className="ghost-btn" onClick={() => setSelectedPerformance(null)}>Close</button>
+              </div>
+
+              <div className="round-score-summary">
+                {[1, 2, 3, 4].map((r) => {
+                  const total = selectedPerformance.answers
+                    .filter((a: any) => a.round === r)
+                    .reduce((sum: number, a: any) => sum + Number(a.score || 0), 0);
+
+                  return (
+                    <div key={r}>
+                      <span>Round {r}</span>
+                      <strong>{total}</strong>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="performance-list">
+                {selectedPerformance.answers.map((item: any, index: number) => (
+                  <article key={`${item.questionId}-${index}`} className="performance-card">
+                    <div className="performance-card-top">
+                      <span>Round {item.round} • Question {index + 1}</span>
+                      <strong className={item.isCorrect ? "correct-pill" : "wrong-pill"}>
+                        {item.isCorrect ? "Correct" : item.isSkipped ? "Skipped" : "Wrong"} — {item.score}/{item.marks}
+                      </strong>
+                    </div>
+
+                    <h3>{item.questionText}</h3>
+
+                    <div className="answer-compare">
+                      <div>
+                        <small>Candidate Answer</small>
+                        <p className={!item.answerText ? "muted-answer" : ""}>
+                          {item.answerText || "Skipped / No answer"}
+                        </p>
+                      </div>
+                      <div>
+                        <small>Correct Answer</small>
+                        <p>{item.correctAnswer || "No stored answer"}</p>
+                      </div>
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </section>
+          </div>
+        )}
+
+        {performanceLoading && (
+          <div className="modal-backdrop">
+            <div className="loading-modal">Loading candidate answers...</div>
+          </div>
         )}
       </div>
     );
@@ -341,7 +462,7 @@ export default function App() {
             <div className="question-meta"><span>{currentQuestion.questionType === "multiple" ? "Multiple Choice" : "Short Answer"}</span><span>{currentQuestion.marks} mark</span></div>
             <h2>{currentQuestion.questionText}</h2>
             {currentQuestion.questionType === "multiple" ? <div className="answers">{currentQuestion.options.map((opt, i) => <button key={opt} className={selectedAnswer === opt ? "selected" : ""} onClick={() => setSelectedAnswer(opt)}><span>{String.fromCharCode(65 + i)}</span>{opt}</button>)}</div> : <input className="short-answer" placeholder="Type one-word answer..." value={selectedAnswer} onChange={(e) => setSelectedAnswer(e.target.value)} />}
-            <div className="question-actions">{canGoBack ? <button className="ghost-btn" onClick={previousQuestion}>Previous</button> : <span /> }<div>{canSkip && <button className="ghost-btn" onClick={() => nextQuestion(true)}>Skip</button>}<button className="primary-btn small" onClick={() => nextQuestion(false)} disabled={!selectedAnswer.trim()}>Next</button></div></div>
+            <div className="question-actions">{canGoBack ? <button className="ghost-btn" onClick={previousQuestion}>Previous</button> : <span />}<div>{canSkip && <button className="ghost-btn" onClick={() => nextQuestion(true)}>Skip</button>}<button className="primary-btn small" onClick={() => nextQuestion(false)} disabled={!selectedAnswer.trim()}>Next</button></div></div>
           </section>
         </main>
       </div>
