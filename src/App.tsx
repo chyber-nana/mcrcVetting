@@ -27,7 +27,7 @@ const defaultCategories = [
   "JavaScript",
   "Graphic Designing",
   "3D Modelling",
-  "Ethical Hacking",
+  "Cyber Security",
   "Robotics: Arduino & Mindstorm",
 ];
 
