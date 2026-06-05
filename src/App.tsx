@@ -15,6 +15,8 @@ type Question = {
 
 type Settings = Record<string, { questionCount: number; marks: number; timeMinutes: number }>;
 
+type AdminCategory = { id: string; name: string; isActive: boolean; questionCount: number };
+
 const defaultSettings: Settings = {
   "1": { questionCount: 25, marks: 25, timeMinutes: 25 },
   "2": { questionCount: 15, marks: 15, timeMinutes: 10 },
@@ -71,11 +73,13 @@ export default function App() {
 
   const [adminPassword, setAdminPassword] = useState("");
   const [adminAuthed, setAdminAuthed] = useState(false);
-  const [adminTab, setAdminTab] = useState<"questions" | "leaderboard" | "settings">("questions");
+  const [adminTab, setAdminTab] = useState<"questions" | "categories" | "leaderboard" | "settings">("questions");
   const [adminRound, setAdminRound] = useState("1");
   const [adminCategory, setAdminCategory] = useState("Python");
   const [adminQuestions, setAdminQuestions] = useState<any[]>([]);
   const [leaderboard, setLeaderboard] = useState<any[]>([]);
+  const [adminCategories, setAdminCategories] = useState<AdminCategory[]>([]);
+  const [newCategoryName, setNewCategoryName] = useState("");
 
   const currentQuestion = questions[questionIndex];
   const progress = questions.length ? ((questionIndex + 1) / questions.length) * 100 : 0;
@@ -84,7 +88,7 @@ export default function App() {
 
   useEffect(() => {
     api("/api/settings").then((s) => Object.keys(s).length && setSettings(s)).catch(() => { });
-    api("/api/categories").then((c) => c.length && setCategories(c)).catch(() => { });
+    loadPublicCategories();
   }, []);
 
   useEffect(() => {
@@ -203,11 +207,83 @@ export default function App() {
     }
   }
 
+  async function loadPublicCategories() {
+    try {
+      const c = await api("/api/categories");
+      if (Array.isArray(c) && c.length) {
+        setCategories(c);
+        if (!c.includes(adminCategory)) setAdminCategory(c[0]);
+      }
+    } catch {
+      // Keep fallback categories if the backend is unavailable.
+    }
+  }
+
+  async function loadAdminCategories() {
+    const data = await api("/api/admin/categories", { headers: { "x-admin-password": adminPassword } });
+    setAdminCategories(data);
+    const names = data.map((c: AdminCategory) => c.name);
+    if (names.length) {
+      setCategories(names);
+      if (!names.includes(adminCategory)) setAdminCategory(names[0]);
+    }
+  }
+
+  async function addCategory() {
+    const name = newCategoryName.trim();
+    if (!name) return alert("Enter a category name.");
+    try {
+      await api("/api/admin/categories", {
+        method: "POST",
+        headers: { "x-admin-password": adminPassword },
+        body: JSON.stringify({ name }),
+      });
+      setNewCategoryName("");
+      await loadAdminCategories();
+      await loadPublicCategories();
+    } catch (e: any) {
+      alert(e.message || "Could not add category.");
+    }
+  }
+
+  async function renameCategory(category: AdminCategory) {
+    const name = category.name.trim();
+    if (!name) return alert("Category name cannot be empty.");
+    try {
+      await api(`/api/admin/categories/${category.id}`, {
+        method: "PUT",
+        headers: { "x-admin-password": adminPassword },
+        body: JSON.stringify({ name }),
+      });
+      await loadAdminCategories();
+      await loadPublicCategories();
+      await loadAdminQuestions();
+    } catch (e: any) {
+      alert(e.message || "Could not rename category.");
+    }
+  }
+
+  async function deleteCategory(category: AdminCategory) {
+    const ok = window.confirm(`Hide the category "${category.name}" from candidate selection? Existing questions will remain stored.`);
+    if (!ok) return;
+    try {
+      await api(`/api/admin/categories/${category.id}`, {
+        method: "DELETE",
+        headers: { "x-admin-password": adminPassword },
+      });
+      await loadAdminCategories();
+      await loadPublicCategories();
+    } catch (e: any) {
+      alert(e.message || "Could not delete category.");
+    }
+  }
+
   async function adminLogin() {
     try {
       const lb = await api("/api/admin/leaderboard", { headers: { "x-admin-password": adminPassword } });
       setLeaderboard(lb);
       setAdminAuthed(true);
+      await loadAdminCategories();
       await loadAdminQuestions();
     } catch {
       alert("Wrong admin password.");
@@ -304,6 +380,7 @@ export default function App() {
           <main className="admin-wrap">
             <div className="tabs">
               <button className={adminTab === "questions" ? "active" : ""} onClick={() => { setAdminTab("questions"); loadAdminQuestions(); }}>Questions</button>
+              <button className={adminTab === "categories" ? "active" : ""} onClick={() => { setAdminTab("categories"); loadAdminCategories(); }}>Categories</button>
               <button className={adminTab === "leaderboard" ? "active" : ""} onClick={() => { setAdminTab("leaderboard"); loadLeaderboard(); }}>Leaderboard</button>
               <button className={adminTab === "settings" ? "active" : ""} onClick={() => setAdminTab("settings")}>Settings</button>
             </div>
