@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from "react";
+import Admin from "./Admin";
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:10000";
+const ADMIN_PATH = "/mcrc-admin-9x7k2p";
 
 type Question = {
   id: string;
@@ -14,13 +16,6 @@ type Question = {
 };
 
 type Settings = Record<string, { questionCount: number; marks: number; timeMinutes: number }>;
-
-type AdminCategory = {
-  id: string;
-  name: string;
-  isActive: boolean;
-  questionCount: number;
-};
 
 const defaultSettings: Settings = {
   "1": { questionCount: 25, marks: 25, timeMinutes: 25 },
@@ -75,12 +70,12 @@ async function api(path: string, options: RequestInit = {}) {
 }
 
 export default function App() {
-  const [mode, setMode] = useState<"candidate" | "admin">("candidate");
+  if (window.location.pathname === ADMIN_PATH) {
+    return <Admin />;
+  }
+
   const [settings, setSettings] = useState<Settings>(defaultSettings);
   const [categories, setCategories] = useState<string[]>(defaultCategories);
-
-  const [selectedPerformance, setSelectedPerformance] = useState<any | null>(null);
-  const [performanceLoading, setPerformanceLoading] = useState(false);
 
   const [fullName, setFullName] = useState("");
   const [round2Category, setRound2Category] = useState("");
@@ -93,16 +88,6 @@ export default function App() {
   const [roundActive, setRoundActive] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const [adminPassword, setAdminPassword] = useState("");
-  const [adminAuthed, setAdminAuthed] = useState(false);
-  const [adminTab, setAdminTab] = useState<"questions" | "categories" | "leaderboard" | "settings">("questions");
-  const [adminRound, setAdminRound] = useState("1");
-  const [adminCategory, setAdminCategory] = useState("Python");
-  const [adminQuestions, setAdminQuestions] = useState<any[]>([]);
-  const [leaderboard, setLeaderboard] = useState<any[]>([]);
-  const [adminCategories, setAdminCategories] = useState<AdminCategory[]>([]);
-  const [newCategoryName, setNewCategoryName] = useState("");
 
   const currentQuestion = questions[questionIndex];
   const progress = questions.length ? ((questionIndex + 1) / questions.length) * 100 : 0;
@@ -130,87 +115,9 @@ export default function App() {
   async function loadPublicCategories() {
     try {
       const raw = await api("/api/categories");
-      const names = normalizeCategories(raw);
-      setCategories(names);
-
-      if (!adminCategory && names.length) setAdminCategory(names[0]);
-      if (adminCategory && !names.includes(adminCategory) && names.length) setAdminCategory(names[0]);
+      setCategories(normalizeCategories(raw));
     } catch {
       setCategories(defaultCategories);
-    }
-  }
-
-  async function loadAdminCategories() {
-    const raw = await api("/api/admin/categories", {
-      headers: { "x-admin-password": adminPassword },
-    });
-
-    const normalized = Array.isArray(raw)
-      ? raw
-          .map((item: any) => ({
-            id: String(item.id),
-            name: String(item.name || ""),
-            isActive: Boolean(item.isActive ?? item.is_active ?? true),
-            questionCount: Number(item.questionCount ?? item.question_count ?? 0),
-          }))
-          .filter((item: AdminCategory) => item.id && item.name)
-      : [];
-
-    setAdminCategories(normalized);
-  }
-
-  async function addCategory() {
-    const name = newCategoryName.trim();
-    if (!name) return alert("Enter a category name.");
-
-    await api("/api/admin/categories", {
-      method: "POST",
-      headers: { "x-admin-password": adminPassword },
-      body: JSON.stringify({ name }),
-    });
-
-    setNewCategoryName("");
-    await loadAdminCategories();
-    await loadPublicCategories();
-  }
-
-  async function renameCategory(category: AdminCategory) {
-    const name = category.name.trim();
-    if (!name) return alert("Category name cannot be empty.");
-
-    await api(`/api/admin/categories/${category.id}`, {
-      method: "PUT",
-      headers: { "x-admin-password": adminPassword },
-      body: JSON.stringify({ name }),
-    });
-
-    await loadAdminCategories();
-    await loadPublicCategories();
-
-    if (adminRound === "2") {
-      setAdminCategory(name);
-      await loadAdminQuestions();
-    }
-  }
-
-  async function deleteCategory(category: AdminCategory) {
-    const confirmed = window.confirm(
-      `Hide "${category.name}" from Round 2 category selection? This will not delete its existing questions.`
-    );
-
-    if (!confirmed) return;
-
-    await api(`/api/admin/categories/${category.id}`, {
-      method: "DELETE",
-      headers: { "x-admin-password": adminPassword },
-    });
-
-    await loadAdminCategories();
-    await loadPublicCategories();
-
-    if (adminCategory === category.name) {
-      const remaining = categories.filter((name) => name !== category.name);
-      setAdminCategory(remaining[0] || "Python");
     }
   }
 
@@ -304,147 +211,6 @@ export default function App() {
     }
   }
 
-  async function loadAdminQuestions() {
-    const params = new URLSearchParams({ round: adminRound });
-    if (adminRound === "2") params.set("category", adminCategory);
-
-    const qs = await api(`/api/admin/questions?${params.toString()}`, {
-      headers: { "x-admin-password": adminPassword },
-    });
-
-    setAdminQuestions(qs);
-  }
-
-  async function loadLeaderboard() {
-    const lb = await api("/api/admin/leaderboard", {
-      headers: { "x-admin-password": adminPassword },
-    });
-
-    setLeaderboard(lb);
-  }
-
-  async function openCandidate(id: string) {
-    try {
-      setPerformanceLoading(true);
-
-      const data = await api(`/api/admin/candidates/${id}/performance`, {
-        headers: { "x-admin-password": adminPassword },
-      });
-
-      setSelectedPerformance(data);
-    } catch (e: any) {
-      alert(e.message || "Could not load candidate performance.");
-    } finally {
-      setPerformanceLoading(false);
-    }
-  }
-
-  async function adminLogin() {
-    try {
-      const lb = await api("/api/admin/leaderboard", {
-        headers: { "x-admin-password": adminPassword },
-      });
-
-      setLeaderboard(lb);
-      setAdminAuthed(true);
-      await loadPublicCategories();
-      await loadAdminCategories();
-      await loadAdminQuestions();
-    } catch {
-      alert("Wrong admin password.");
-    }
-  }
-
-  async function addAdminQuestion() {
-    const payload = {
-      round: Number(adminRound),
-      category:
-        adminRound === "1"
-          ? "General"
-          : adminRound === "2"
-          ? adminCategory
-          : adminRound === "3"
-          ? "Microsoft Office"
-          : "Club",
-      questionType: "multiple",
-      questionText: "New question",
-      options: ["Option A", "Option B", "Option C", "Option D"],
-      correctAnswer: "Option A",
-      marks: 1,
-    };
-
-    await api("/api/admin/questions", {
-      method: "POST",
-      headers: { "x-admin-password": adminPassword },
-      body: JSON.stringify(payload),
-    });
-
-    await loadAdminQuestions();
-    await loadAdminCategories();
-    await loadPublicCategories();
-  }
-
-  async function saveQuestion(q: any) {
-    await api(`/api/admin/questions/${q.id}`, {
-      method: "PUT",
-      headers: { "x-admin-password": adminPassword },
-      body: JSON.stringify({
-        round: q.round,
-        category: q.category,
-        questionType: q.question_type,
-        questionText: q.question_text,
-        options: typeof q.options === "string" ? JSON.parse(q.options) : q.options || [],
-        correctAnswer: q.correct_answer,
-        marks: q.marks,
-      }),
-    });
-
-    await loadAdminQuestions();
-    await loadAdminCategories();
-    await loadPublicCategories();
-  }
-
-  async function deleteQuestion(id: string) {
-    await api(`/api/admin/questions/${id}`, {
-      method: "DELETE",
-      headers: { "x-admin-password": adminPassword },
-    });
-
-    await loadAdminQuestions();
-    await loadAdminCategories();
-  }
-
-  async function saveSettings() {
-    await api("/api/admin/settings", {
-      method: "PUT",
-      headers: { "x-admin-password": adminPassword },
-      body: JSON.stringify({ roundConfig: settings }),
-    });
-
-    alert("Settings saved.");
-  }
-
-  async function clearLeaderboard() {
-    const confirmed = window.confirm(
-      "Are you sure you want to clear the leaderboard? This will delete all candidates, scores, assigned questions, and submitted answers."
-    );
-
-    if (!confirmed) return;
-
-    try {
-      await api("/api/admin/leaderboard", {
-        method: "DELETE",
-        headers: { "x-admin-password": adminPassword },
-      });
-
-      setLeaderboard([]);
-      setSelectedPerformance(null);
-      alert("Leaderboard cleared successfully.");
-    } catch (e: any) {
-      alert(e.message || "Could not clear leaderboard.");
-    }
-  }
-
   const roundTitle = useMemo(() => {
     if (currentRound === 1) return "Round 1: General IT Knowledge";
     if (currentRound === 2) return `Round 2: ${round2Category}`;
@@ -452,428 +218,6 @@ export default function App() {
     if (currentRound === 4) return "Round 4: Club Knowledge";
     return "MCRC Vetting";
   }, [currentRound, round2Category]);
-
-  if (mode === "admin") {
-    return (
-      <div className="app-shell">
-        <div className="bg-glow one" />
-        <div className="bg-glow two" />
-
-        <nav className="topbar">
-          <div className="logo">
-            MCRC<span>VETTING</span>
-          </div>
-          <button className="ghost-btn" onClick={() => setMode("candidate")}>
-            Candidate Portal
-          </button>
-        </nav>
-
-        {!adminAuthed ? (
-          <section className="login-card">
-            <h1>Admin Dashboard</h1>
-            <p>Manage questions, categories, timers, scores and leaderboard data from PostgreSQL.</p>
-            <input
-              type="password"
-              placeholder="Admin password"
-              value={adminPassword}
-              onChange={(e) => setAdminPassword(e.target.value)}
-            />
-            <button className="primary-btn" onClick={adminLogin}>
-              Open Admin
-            </button>
-          </section>
-        ) : (
-          <main className="admin-wrap">
-            <div className="tabs">
-              <button
-                className={adminTab === "questions" ? "active" : ""}
-                onClick={() => {
-                  setAdminTab("questions");
-                  loadAdminQuestions();
-                }}
-              >
-                Questions
-              </button>
-              <button
-                className={adminTab === "categories" ? "active" : ""}
-                onClick={() => {
-                  setAdminTab("categories");
-                  loadAdminCategories();
-                }}
-              >
-                Categories
-              </button>
-              <button
-                className={adminTab === "leaderboard" ? "active" : ""}
-                onClick={() => {
-                  setAdminTab("leaderboard");
-                  loadLeaderboard();
-                }}
-              >
-                Leaderboard
-              </button>
-              <button className={adminTab === "settings" ? "active" : ""} onClick={() => setAdminTab("settings")}>
-                Settings
-              </button>
-            </div>
-
-            {adminTab === "questions" && (
-              <section className="panel">
-                <div className="panel-head">
-                  <div>
-                    <h2>Question Bank</h2>
-                    <p>Questions are stored in the backend database.</p>
-                  </div>
-                  <button className="primary-btn small" onClick={addAdminQuestion}>
-                    Add Question
-                  </button>
-                </div>
-
-                <div className="filters">
-                  <select value={adminRound} onChange={(e) => setAdminRound(e.target.value)}>
-                    <option value="1">Round 1</option>
-                    <option value="2">Round 2</option>
-                    <option value="3">Round 3</option>
-                    <option value="4">Round 4</option>
-                  </select>
-
-                  {adminRound === "2" && (
-                    <select value={adminCategory} onChange={(e) => setAdminCategory(e.target.value)}>
-                      {categories.map((category) => (
-                        <option key={category} value={category}>
-                          {category}
-                        </option>
-                      ))}
-                    </select>
-                  )}
-
-                  <button className="ghost-btn" onClick={loadAdminQuestions}>
-                    Load
-                  </button>
-                </div>
-
-                <div className="question-list">
-                  {adminQuestions.map((q, idx) => {
-                    const options = typeof q.options === "string" ? JSON.parse(q.options) : q.options || [];
-
-                    return (
-                      <div className="editor-card" key={q.id}>
-                        <div className="editor-top">
-                          <strong>Question {idx + 1}</strong>
-                          <div>
-                            <select
-                              value={q.question_type}
-                              onChange={(e) =>
-                                setAdminQuestions((arr) =>
-                                  arr.map((x) => (x.id === q.id ? { ...x, question_type: e.target.value } : x))
-                                )
-                              }
-                            >
-                              <option value="multiple">Multiple Choice</option>
-                              <option value="short">Short Answer</option>
-                            </select>
-                            <button className="danger-btn" onClick={() => deleteQuestion(q.id)}>
-                              Delete
-                            </button>
-                          </div>
-                        </div>
-
-                        <textarea
-                          value={q.question_text}
-                          onChange={(e) =>
-                            setAdminQuestions((arr) =>
-                              arr.map((x) => (x.id === q.id ? { ...x, question_text: e.target.value } : x))
-                            )
-                          }
-                        />
-
-                        {q.question_type === "multiple" && (
-                          <div className="option-grid">
-                            {options.map((opt: string, i: number) => (
-                              <input
-                                key={i}
-                                value={opt}
-                                onChange={(e) => {
-                                  const next = [...options];
-                                  next[i] = e.target.value;
-                                  setAdminQuestions((arr) =>
-                                    arr.map((x) => (x.id === q.id ? { ...x, options: next } : x))
-                                  );
-                                }}
-                              />
-                            ))}
-                          </div>
-                        )}
-
-                        <div className="option-grid">
-                          <input
-                            value={q.correct_answer}
-                            placeholder="Correct answer"
-                            onChange={(e) =>
-                              setAdminQuestions((arr) =>
-                                arr.map((x) => (x.id === q.id ? { ...x, correct_answer: e.target.value } : x))
-                              )
-                            }
-                          />
-                          <input
-                            type="number"
-                            value={q.marks}
-                            onChange={(e) =>
-                              setAdminQuestions((arr) =>
-                                arr.map((x) => (x.id === q.id ? { ...x, marks: Number(e.target.value) } : x))
-                              )
-                            }
-                          />
-                        </div>
-
-                        <button className="primary-btn small" onClick={() => saveQuestion(q)}>
-                          Save Question
-                        </button>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
-            )}
-
-            {adminTab === "categories" && (
-              <section className="panel">
-                <div className="panel-head">
-                  <div>
-                    <h2>Round 2 Categories</h2>
-                    <p>Add, rename, or hide category options shown to candidates in Round 2.</p>
-                  </div>
-                  <button className="ghost-btn" onClick={loadAdminCategories}>
-                    Refresh
-                  </button>
-                </div>
-
-                <div className="category-manager">
-                  <div className="category-add-row">
-                    <input
-                      value={newCategoryName}
-                      placeholder="New category name, e.g. Networking"
-                      onChange={(e) => setNewCategoryName(e.target.value)}
-                    />
-                    <button className="primary-btn small" onClick={addCategory}>
-                      Add Category
-                    </button>
-                  </div>
-
-                  <div className="category-list">
-                    {adminCategories.length === 0 ? (
-                      <div className="editor-card">
-                        <strong>No categories loaded.</strong>
-                        <p className="muted-note">
-                          Click Refresh. If it is still empty, check that your backend /api/admin/categories route is deployed.
-                        </p>
-                      </div>
-                    ) : (
-                      adminCategories.map((category) => (
-                        <div className="category-edit-card" key={category.id}>
-                          <div>
-                            <label>Category Name</label>
-                            <input
-                              value={category.name}
-                              onChange={(e) =>
-                                setAdminCategories((arr) =>
-                                  arr.map((item) =>
-                                    item.id === category.id ? { ...item, name: e.target.value } : item
-                                  )
-                                )
-                              }
-                            />
-                            <small>{category.questionCount} active Round 2 question(s)</small>
-                          </div>
-
-                          <div className="category-actions">
-                            <button className="primary-btn small" onClick={() => renameCategory(category)}>
-                              Save Name
-                            </button>
-                            <button className="danger-btn" onClick={() => deleteCategory(category)}>
-                              Hide
-                            </button>
-                          </div>
-                        </div>
-                      ))
-                    )}
-                  </div>
-                </div>
-              </section>
-            )}
-
-            {adminTab === "leaderboard" && (
-              <section className="panel">
-                <div className="panel-head">
-                  <div>
-                    <h2>Leaderboard</h2>
-                    <p>Click a candidate to view the questions, answers given, correct answers, and marks.</p>
-                  </div>
-                  <div className="panel-actions">
-                    <button className="ghost-btn" onClick={loadLeaderboard}>
-                      Refresh
-                    </button>
-                    <button className="danger-btn" onClick={clearLeaderboard}>
-                      Clear Leaderboard
-                    </button>
-                  </div>
-                </div>
-
-                <div className="table-wrap">
-                  <table>
-                    <thead>
-                      <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Score</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {leaderboard.map((c, i) => (
-                        <tr key={c.id} onClick={() => openCandidate(c.id)}>
-                          <td>{i + 1}</td>
-                          <td>{c.fullName}</td>
-                          <td>{c.round2Category}</td>
-                          <td>
-                            {c.totalScore}/{c.totalPossible}
-                          </td>
-                          <td>{c.status}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            )}
-
-            {adminTab === "settings" && (
-              <section className="panel">
-                <div className="panel-head">
-                  <h2>Round Settings</h2>
-                  <button className="primary-btn small" onClick={saveSettings}>
-                    Save Settings
-                  </button>
-                </div>
-
-                <div className="settings-grid">
-                  {[1, 2, 3, 4].map((r) => (
-                    <div className="setting-card" key={r}>
-                      <h3>Round {r}</h3>
-                      <label>Questions</label>
-                      <input
-                        type="number"
-                        value={settings[String(r)].questionCount}
-                        onChange={(e) =>
-                          setSettings((s) => ({
-                            ...s,
-                            [r]: { ...s[String(r)], questionCount: Number(e.target.value) },
-                          }))
-                        }
-                      />
-                      <label>Marks</label>
-                      <input
-                        type="number"
-                        value={settings[String(r)].marks}
-                        onChange={(e) =>
-                          setSettings((s) => ({
-                            ...s,
-                            [r]: { ...s[String(r)], marks: Number(e.target.value) },
-                          }))
-                        }
-                      />
-                      <label>Time in minutes</label>
-                      <input
-                        type="number"
-                        value={settings[String(r)].timeMinutes}
-                        onChange={(e) =>
-                          setSettings((s) => ({
-                            ...s,
-                            [r]: { ...s[String(r)], timeMinutes: Number(e.target.value) },
-                          }))
-                        }
-                      />
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-          </main>
-        )}
-
-        {selectedPerformance && (
-          <div className="modal-backdrop" onClick={() => setSelectedPerformance(null)}>
-            <section className="performance-modal" onClick={(e) => e.stopPropagation()}>
-              <div className="performance-modal-head">
-                <div>
-                  <h2>{selectedPerformance.candidate.fullName}</h2>
-                  <p>
-                    Total Score: {selectedPerformance.candidate.totalScore}/
-                    {selectedPerformance.candidate.totalPossible}
-                  </p>
-                </div>
-                <button className="ghost-btn" onClick={() => setSelectedPerformance(null)}>
-                  Close
-                </button>
-              </div>
-
-              <div className="round-score-summary">
-                {[1, 2, 3, 4].map((r) => {
-                  const total = selectedPerformance.answers
-                    .filter((a: any) => a.round === r)
-                    .reduce((sum: number, a: any) => sum + Number(a.score || 0), 0);
-
-                  return (
-                    <div key={r}>
-                      <span>Round {r}</span>
-                      <strong>{total}</strong>
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="performance-list">
-                {selectedPerformance.answers.map((item: any, index: number) => (
-                  <article key={`${item.questionId}-${index}`} className="performance-card">
-                    <div className="performance-card-top">
-                      <span>
-                        Round {item.round} • Question {index + 1}
-                      </span>
-                      <strong className={item.isCorrect ? "correct-pill" : "wrong-pill"}>
-                        {item.isCorrect ? "Correct" : item.isSkipped ? "Skipped" : "Wrong"} — {item.score}/{item.marks}
-                      </strong>
-                    </div>
-
-                    <h3>{item.questionText}</h3>
-
-                    <div className="answer-compare">
-                      <div>
-                        <small>Candidate Answer</small>
-                        <p className={!item.answerText ? "muted-answer" : ""}>
-                          {item.answerText || "Skipped / No answer"}
-                        </p>
-                      </div>
-                      <div>
-                        <small>Correct Answer</small>
-                        <p>{item.correctAnswer || "No stored answer"}</p>
-                      </div>
-                    </div>
-                  </article>
-                ))}
-              </div>
-            </section>
-          </div>
-        )}
-
-        {performanceLoading && (
-          <div className="modal-backdrop">
-            <div className="loading-modal">Loading candidate answers...</div>
-          </div>
-        )}
-      </div>
-    );
-  }
 
   if (completed) {
     return (
@@ -902,9 +246,7 @@ export default function App() {
         <div className="quiz-head">
           <div>
             <span>{roundTitle}</span>
-            <h1>
-              Question {questionIndex + 1} of {questions.length}
-            </h1>
+            <h1>Question {questionIndex + 1} of {questions.length}</h1>
           </div>
           <div className="timer">{formatTime(timeLeft)}</div>
         </div>
@@ -946,19 +288,13 @@ export default function App() {
 
             <div className="question-actions">
               {canGoBack ? (
-                <button className="ghost-btn" onClick={previousQuestion}>
-                  Previous
-                </button>
+                <button className="ghost-btn" onClick={previousQuestion}>Previous</button>
               ) : (
                 <span />
               )}
 
               <div>
-                {canSkip && (
-                  <button className="ghost-btn" onClick={() => nextQuestion(true)}>
-                    Skip
-                  </button>
-                )}
+                {canSkip && <button className="ghost-btn" onClick={() => nextQuestion(true)}>Skip</button>}
                 <button className="primary-btn small" onClick={() => nextQuestion(false)} disabled={!selectedAnswer.trim()}>
                   Next
                 </button>
@@ -993,17 +329,13 @@ export default function App() {
         <div className="logo">
           MCRC<span>VETTING</span>
         </div>
-        <button className="ghost-btn" onClick={() => setMode("admin")}>
-          Admin
-        </button>
       </nav>
 
       <section className="hero">
         <p className="eyebrow">Executive Selection Portal</p>
         <h1>MCRC VETTING</h1>
         <p className="hero-copy">
-          A 50-mark executive vetting system with backend storage, hidden scoring, timers, progress tracking, and an
-          admin leaderboard.
+          A 50-mark executive vetting system with backend storage, hidden scoring, timers, progress tracking, and a private admin leaderboard.
         </p>
 
         <div className="start-card">
@@ -1014,9 +346,7 @@ export default function App() {
           <select value={round2Category} onChange={(e) => setRound2Category(e.target.value)}>
             <option value="">Select category</option>
             {categories.map((category) => (
-              <option key={category} value={category}>
-                {category}
-              </option>
+              <option key={category} value={category}>{category}</option>
             ))}
           </select>
 
